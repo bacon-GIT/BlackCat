@@ -1,0 +1,1 @@
+g++ -std=c++17 BlackCat.cpp Game.cpp -Wall -lSDL2 -lSDL2_image -o main
