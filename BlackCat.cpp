@@ -7,7 +7,10 @@ Date of Last Edit: 03/14/2023
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <iostream>
+#include "Player.h"
 #include "Game.h"
+
+
 
 Game *game = nullptr;
 

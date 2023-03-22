@@ -4,8 +4,6 @@
 
 
 Log::Logger gameLogger("BC.log", true, 5);
-SDL_Rect srcR, destR;
-
 
 Game::Game() {
 }
@@ -13,6 +11,7 @@ Game::~Game() {
 }
 
 void Game::init(const char* title, int xpos, int ypos, int width, int height, bool fullscreen) {
+    // Load engine
     if (SDL_Init(SDL_INIT_VIDEO) < 0) {
 			gameLogger.ERROR("Video not initialized");
     }
@@ -25,8 +24,6 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
     if (renderer) {
         gameLogger.INFO("Renderer Initalized");
     }
-    img = IMG_LoadTexture(renderer, "Assets/SpaceBoy1.png");
-
 }
 
 void Game::handleEvents() {
@@ -39,16 +36,17 @@ void Game::handleEvents() {
         case SDL_KEYDOWN:
                 switch( event.key.keysym.sym ){
                     case SDLK_LEFT:
-                        destR.x -= move_speed;
+                        destR.x -= player.move_speed;
+                        std::cout << "Here" << std::endl;
                         break;
                     case SDLK_RIGHT:
-                        destR.x += move_speed;
+                        destR.x += player.move_speed;
                         break;
                     case SDLK_UP:
-                        destR.y -= move_speed;
+                        destR.y -= player.move_speed;
                         break;
                     case SDLK_DOWN:
-                        destR.y += move_speed;
+                        destR.y += player.move_speed;
                         break;
                     default:
                         break;
@@ -61,6 +59,7 @@ void Game::handleEvents() {
 void Game::update() {
     destR.w = 125;
     destR.h = 230;
+
 }
 
 void Game::render() {
